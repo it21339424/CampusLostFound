@@ -61,7 +61,10 @@ exports.createClaim = async (req, res) => {
 exports.getAllClaims = async (req, res) => {
   try {
     const claims = await Claim.find()
-      .populate("itemId", "itemName category status image")
+      .populate(
+        "itemId",
+        "itemName category status image createdBy"
+      )
       .populate("userId", "name email")
       .sort({ createdAt: -1 });
 
